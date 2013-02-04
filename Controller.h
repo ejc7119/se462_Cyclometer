@@ -16,6 +16,8 @@ class Controller {
 private:
 	ICyclometer_State* cyclometer_current;
 	IDisplay_State* display_current;
+	int wheel_size;
+	bool km_speed_scale = true;
 public:
 	Controller();
 	void receive_event();
