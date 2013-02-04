@@ -7,6 +7,10 @@
 
 #ifndef CYCLOMETER_DURATION_STATE_H_
 #define CYCLOMETER_DURATION_STATE_H_
-
+#include "ICyclometer_State.h"
+class Cyclometer_Duration_State: public ICyclometer_State{
+public:
+	virtual ICyclometer_State* determine_state();
+};
 
 #endif /* CYCLOMETER_DURATION_STATE_H_ */

@@ -7,6 +7,10 @@
 
 #ifndef DISPLAY_DURATION_STATE_H_
 #define DISPLAY_DURATION_STATE_H_
-
+#include "IDisplay_State.h"
+class Display_Duration_State: public IDisplay_State {
+public:
+	virtual IDisplay_State* determine_state();
+};
 
 #endif /* DISPLAY_DURATION_STATE_H_ */
