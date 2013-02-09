@@ -9,6 +9,8 @@
 #define CYCLOMETER_DURATION_STATE_H_
 #include "ICyclometer_State.h"
 #include "Settings.h"
+#include "Cyclometer_Average_Speed_State.h"
+#include "Cyclometer_Reset_State.h"
 
 class Cyclometer_Duration_State: public ICyclometer_State{
 public:

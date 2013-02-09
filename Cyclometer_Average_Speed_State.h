@@ -10,6 +10,9 @@
 
 #include "ICyclometer_State.h"
 #include "Settings.h"
+#include "Cyclometer_Distance_State.h"
+#include "Cyclometer_Reset_State.h"
+
 class Cyclometer_Average_Speed_State: public ICyclometer_State {
 public:
 	Cyclometer_Average_Speed_State(Settings* set):

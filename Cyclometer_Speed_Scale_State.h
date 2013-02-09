@@ -9,6 +9,7 @@
 #define CYCLOMETER_SPEED_SCALE_STATE_H_
 #include "ICyclometer_State.h"
 #include "Settings.h"
+#include "Cyclometer_Wheel_Size_State.h"
 
 class Cyclometer_Speed_Scale_State: public ICyclometer_State {
 public:

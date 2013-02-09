@@ -9,6 +9,9 @@
 #define CYCLOMETER_DISTANCE_STATE_H_
 #include "ICyclometer_State.h"
 #include "Settings.h"
+#include "Cyclometer_Duration_State.h"
+#include "Cyclometer_Reset_State.h"
+#include "Cyclometer_Wheel_Size_State.h"
 
 class Cyclometer_Distance_State : public ICyclometer_State {
 public:

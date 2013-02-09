@@ -9,6 +9,9 @@
 #define CYCLOMETER_WHEEL_SIZE_STATE_H_
 #include "ICyclometer_State.h"
 #include "Settings.h"
+#include "Cyclometer_Average_Speed_State.h"
+#include "Cyclometer_Wheel_Size_State.h"
+#include "Cyclometer_Distance_State.h"
 
 class Cyclometer_Wheel_Size_State: public ICyclometer_State {
 public:
