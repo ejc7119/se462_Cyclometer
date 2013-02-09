@@ -8,9 +8,12 @@
 #ifndef DISPLAY_RESET_STATE_H_
 #define DISPLAY_RESET_STATE_H_
 #include "IDisplay_State.h"
+#include "Settings.h"
+
 class Display_Reset_State: public IDisplay_State {
 public:
-	Display_Reset_State() {}
+	Display_Reset_State(Settings* set):
+		IDisplay_State(set) {}
 
 	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
 };

@@ -8,11 +8,10 @@
 #include "Controller.h"
 
 Controller::Controller(){
-	wheel_size = 190;
-	km_speed_scale = true;
+	settings = new Settings();
 
-	cyclometer_current = new Cyclometer_Reset_State(wheel_size, km_speed_scale);
-	display_current = new Display_Reset_State();
+	cyclometer_current = new Cyclometer_Reset_State(settings);
+	display_current = new Display_Reset_State(settings);
 }
 void Controller::receive_event(int mode,int start_stop,int set,int mode_start_stop_set_held,int mode_held, int mode_start_stop_held){
 	// Determine the next cyclometer and display state

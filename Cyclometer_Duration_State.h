@@ -8,10 +8,12 @@
 #ifndef CYCLOMETER_DURATION_STATE_H_
 #define CYCLOMETER_DURATION_STATE_H_
 #include "ICyclometer_State.h"
+#include "Settings.h"
+
 class Cyclometer_Duration_State: public ICyclometer_State{
 public:
-	Cyclometer_Duration_State(int ws, bool ss):
-		ICyclometer_State(ws, ss) {}
+	Cyclometer_Duration_State(Settings* set):
+		ICyclometer_State(set) {}
 	virtual ICyclometer_State* determine_state(int,int,int,int,int,int);
 };
 

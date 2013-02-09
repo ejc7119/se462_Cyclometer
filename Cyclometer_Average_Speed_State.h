@@ -9,11 +9,11 @@
 #define CYCLOMETER_AVERAGE_SPEED_STATE_H_
 
 #include "ICyclometer_State.h"
-
+#include "Settings.h"
 class Cyclometer_Average_Speed_State: public ICyclometer_State {
 public:
-	Cyclometer_Average_Speed_State(int ws, bool ss):
-		ICyclometer_State(ws, ss) {}
+	Cyclometer_Average_Speed_State(Settings* set):
+		ICyclometer_State(set) {}
 	virtual ICyclometer_State* determine_state(int,int,int,int,int,int);
 };
 
