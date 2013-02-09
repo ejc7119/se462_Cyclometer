@@ -7,10 +7,17 @@
 
 #include "Controller.h"
 
-void Controller::receive_event(){
+Controller::Controller(){
+	wheel_size = 190;
+	km_speed_scale = true;
+
+	cyclometer_current = new Cyclometer_Reset_State(wheel_size, km_speed_scale);
+	display_current = new Display_Reset_State();
+}
+void Controller::receive_event(int mode,int start_stop,int set,int mode_start_stop_set_held,int mode_held, int mode_start_stop_held){
 	// Determine the next cyclometer and display state
-	ICyclometer_State* new_cyclometer_state = cyclometer_current->determine_state();
-	IDisplay_State* new_display_state = display_current->determine_state();
+	ICyclometer_State* new_cyclometer_state = cyclometer_current->determine_state(mode,start_stop,set,mode_start_stop_set_held,mode_held,mode_start_stop_held);
+	IDisplay_State* new_display_state = display_current->determine_state(mode,start_stop,set,mode_start_stop_set_held,mode_held,mode_start_stop_held);
 
 	// Delete the pointers to the current states
 	delete cyclometer_current;

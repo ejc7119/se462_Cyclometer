@@ -10,7 +10,9 @@
 #include "IDisplay_State.h"
 class Display_Reset_State: public IDisplay_State {
 public:
-	virtual IDisplay_State* determine_state();
+	Display_Reset_State() {}
+
+	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
 };
 
 #endif /* DISPLAY_RESET_STATE_H_ */

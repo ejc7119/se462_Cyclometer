@@ -10,6 +10,8 @@
 #include "IDisplay_State.h"
 class Display_Distance_State: public IDisplay_State {
 public:
-	virtual IDisplay_State* determine_state();
+	Display_Distance_State() {}
+
+	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
 };
 #endif /* DISPLAY_DISTANCE_STATE_H_ */

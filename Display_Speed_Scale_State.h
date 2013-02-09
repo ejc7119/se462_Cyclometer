@@ -10,7 +10,9 @@
 #include "IDisplay_State.h"
 class Display_Speed_Scale_State: public IDisplay_State {
 public:
-	virtual IDisplay_State* determine_state();
+	Display_Speed_Scale_State() {}
+
+	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
 };
 
 #endif /* DISPLAY_SPEED_SCALE_STATE_H_ */

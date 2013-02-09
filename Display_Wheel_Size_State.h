@@ -10,6 +10,8 @@
 #include "IDisplay_State.h"
 class Display_Wheel_Size_State: public IDisplay_State {
 public:
-	virtual IDisplay_State* determine_state();
+	Display_Wheel_Size_State() {}
+
+	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
 };
 #endif /* DISPLAY_WHEEL_SIZE_STATE_H_ */

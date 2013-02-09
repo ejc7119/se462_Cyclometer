@@ -10,7 +10,9 @@
 #include "ICyclometer_State.h"
 class Cyclometer_Speed_Scale_State: public ICyclometer_State {
 public:
-	virtual ICyclometer_State* determine_state();
+	Cyclometer_Speed_Scale_State(int ws, bool ss):
+		ICyclometer_State(ws, ss) {}
+	virtual ICyclometer_State* determine_state(int,int,int,int,int,int);
 };
 
 #endif /* CYCLOMETER_SPEED_SCALE_STATE_H_ */

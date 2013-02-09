@@ -9,9 +9,15 @@
 #define ICYCLOMETER_STATE_H_
 
 class ICyclometer_State {
+protected:
+	int wheel_size;
+	bool km_speed_scale;
 public:
-	ICyclometer_State() {};
-	~ICyclometer_State() {};
-	virtual ICyclometer_State* determine_state() = 0;
+	// Parameters: Wheel Size, Speed Scale (true = km)
+	ICyclometer_State(int ws,bool ss):
+		wheel_size(ws), km_speed_scale(ss) {}
+	virtual ~ICyclometer_State() {};
+	// Parameters: Mode, Start/Stop, Set, Mode_Start/Stop_Set Held, Mode Held, Mode_Start/Stop Held
+	virtual ICyclometer_State* determine_state(int,int,int,int,int,int) = 0;
 };
 #endif /* ICYCLOMETER_STATE_H_ */

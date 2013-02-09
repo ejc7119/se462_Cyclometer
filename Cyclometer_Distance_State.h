@@ -10,6 +10,8 @@
 #include "ICyclometer_State.h"
 class Cyclometer_Distance_State : public ICyclometer_State {
 public:
-	virtual ICyclometer_State* determine_state();
+	Cyclometer_Distance_State(int ws, bool ss):
+		ICyclometer_State(ws, ss) {}
+	virtual ICyclometer_State* determine_state(int,int,int,int,int,int);
 };
 #endif /* CYCLOMETER_DISTANCE_STATE_H_ */
