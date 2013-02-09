@@ -22,6 +22,7 @@ ICyclometer_State* Cyclometer_Wheel_Size_State::determine_state(int mode,int sta
 		} else {
 			return new Cyclometer_Distance_State(settings);
 		}
+	} else {
+		return new Cyclometer_Wheel_Size_State(settings);
 	}
-	return new Cyclometer_Wheel_Size_State(settings);
 }

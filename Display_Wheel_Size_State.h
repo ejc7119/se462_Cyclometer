@@ -9,6 +9,8 @@
 #define DISPLAY_WHEEL_SIZE_STATE_H_
 #include "IDisplay_State.h"
 #include "Settings.h"
+#include "Display_Distance_State.h"
+#include "Display_Average_Speed_State.h"
 
 class Display_Wheel_Size_State: public IDisplay_State {
 public:

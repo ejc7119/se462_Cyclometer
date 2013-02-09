@@ -9,6 +9,8 @@
 #define DISPLAY_DURATION_STATE_H_
 #include "IDisplay_State.h"
 #include "Settings.h"
+#include "Display_Average_Speed_State.h"
+#include "Display_Reset_State.h"
 
 class Display_Duration_State: public IDisplay_State {
 public:

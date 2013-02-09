@@ -9,6 +9,8 @@
 #define DISPLAY_AVERAGE_SPEED_STATE_H_
 #include "IDisplay_State.h"
 #include "Settings.h"
+#include "Display_Distance_State.h"
+#include "Display_Reset_State.h"
 
 class Display_Average_Speed_State: public IDisplay_State {
 public:
