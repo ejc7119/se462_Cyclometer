@@ -5,3 +5,8 @@
  *      Author: ejc7119
  */
 
+#include "Sensor.h"
+
+void Sensor::pulse_interrupt(){
+
+}

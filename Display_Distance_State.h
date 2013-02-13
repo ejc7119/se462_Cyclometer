@@ -12,11 +12,12 @@
 #include "Display_Duration_State.h"
 #include "Display_Wheel_Size_State.h"
 #include "Display_Reset_State.h"
+#include "Calculations.h"
 
 class Display_Distance_State: public IDisplay_State {
 public:
-	Display_Distance_State(Settings* set):
-		IDisplay_State(set) {}
+	Display_Distance_State(Settings* set, Calculations* calc):
+		IDisplay_State(set, calc) {}
 
 	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
 };

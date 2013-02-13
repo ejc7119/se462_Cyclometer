@@ -20,8 +20,9 @@ private:
 	ICyclometer_State* cyclometer_current;
 	IDisplay_State* display_current;
 	Settings* settings;
+	Calculations* calculations;
 public:
-	Controller();
+	Controller(Settings*,Calculations*);
 	void receive_event(int,int,int,int,int,int);
 };
 #endif /* CONTROLLER_H_ */
