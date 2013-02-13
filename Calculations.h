@@ -7,6 +7,22 @@
 
 #ifndef CALCULATIONS_H_
 #define CALCULATIONS_H_
+#include "Settings.h"
 
+class Calculations{
+private:
+	double average_speed;
+	double current_speed;
+	double distance;
+	double duration;
+	Settings* settings;
+public:
+	Calculations(Settings*);
+	double get_average_speed();
+	double get_current_speed();
+	double get_distance();
+	double get_duration();
+	void receive_pulse();
+};
 
 #endif /* CALCULATIONS_H_ */
