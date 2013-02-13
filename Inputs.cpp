@@ -15,24 +15,32 @@ Inputs::Inputs(Controller* con){
  * Method for retrieving button inputs from the hardware
  */
 void Inputs::get_inputs(){
+
+	// If MODE press
+	controller->receive_event(1,0,0,0,0,0);
+
+	// If START/STOP press
+	controller->receive_event(0,1,0,0,0,0);
+
+	// If SET press
+	controller->receive_event(0,0,1,0,0,0);
+
+	// If MODE_START/STOP_SET Held press
+	controller->receive_event(0,0,0,1,0,0);
+
+	// If MODE Held press
+	controller->receive_event(0,0,0,0,1,0);
+
+	// If MODE_START/STOP Held press
+	controller->receive_event(0,0,0,0,0,1);
+}
+
+void* Inputs::run_inputs(void* arg){
+	Inputs* self = (Inputs*)arg;
+
 	while(1){
-
-		// If MODE press
-		controller->receive_event(1,0,0,0,0,0);
-
-		// If START/STOP press
-		controller->receive_event(0,1,0,0,0,0);
-
-		// If SET press
-		controller->receive_event(0,0,1,0,0,0);
-
-		// If MODE_START/STOP_SET Held press
-		controller->receive_event(0,0,0,1,0,0);
-
-		// If MODE Held press
-		controller->receive_event(0,0,0,0,1,0);
-
-		// If MODE_START/STOP Held press
-		controller->receive_event(0,0,0,0,0,1);
+		self->get_inputs();
 	}
+
+	return NULL;
 }

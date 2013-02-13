@@ -9,13 +9,15 @@
 #define INPUTS_H_
 
 #include "Controller.h"
+#include <pthread.h>
 
 class Inputs {
 private:
 	Controller* controller;
+	void get_inputs();
 public:
 	Inputs(Controller*);
-	void get_inputs();
+	static void* run_inputs(void*);
 };
 
 #endif /* INPUTS_H_ */
