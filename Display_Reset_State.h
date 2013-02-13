@@ -9,15 +9,13 @@
 #define DISPLAY_RESET_STATE_H_
 #include "IDisplay_State.h"
 #include "Settings.h"
-#include "Calculations.h"
 
 class Display_Reset_State: public IDisplay_State {
 public:
-	Display_Reset_State(Settings* set, Calculations* calc):
-		IDisplay_State(set, calc) {}
+	Display_Reset_State(Settings* set):
+		IDisplay_State(set) {}
 
 	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
-	virtual void update_display();
 };
 
 #endif /* DISPLAY_RESET_STATE_H_ */

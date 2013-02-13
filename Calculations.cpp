@@ -27,6 +27,10 @@ double Calculations::get_duration(){
 	return duration;
 }
 
+int Calculations::get_wheel_size(){
+	return settings->get_wheel_size();
+}
+
 void Calculations::receive_pulse(){
 
 }

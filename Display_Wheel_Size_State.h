@@ -11,14 +11,12 @@
 #include "Settings.h"
 #include "Display_Distance_State.h"
 #include "Display_Average_Speed_State.h"
-#include "Calculations.h"
 
 class Display_Wheel_Size_State: public IDisplay_State {
 public:
-	Display_Wheel_Size_State(Settings* set, Calculations* calc):
-		IDisplay_State(set,calc) {}
+	Display_Wheel_Size_State(Settings* set):
+		IDisplay_State(set) {}
 
 	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
-	virtual void update_display();
 };
 #endif /* DISPLAY_WHEEL_SIZE_STATE_H_ */

@@ -9,12 +9,8 @@
 
 IDisplay_State* Display_Speed_Scale_State::determine_state(int mode,int start_stop,int set,int mode_start_stop_set_held,int mode_held, int mode_start_stop_held){
 	if(set){
-		return new Display_Wheel_Size_State(settings,calculations);
+		return new Display_Wheel_Size_State(settings);
 	} else {
-		return new Display_Speed_Scale_State(settings,calculations);
+		return new Display_Speed_Scale_State(settings);
 	}
-}
-
-void Display_Speed_Scale_State::update_display(){
-
 }

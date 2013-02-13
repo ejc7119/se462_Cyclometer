@@ -16,10 +16,9 @@
 
 class Display_Distance_State: public IDisplay_State {
 public:
-	Display_Distance_State(Settings* set, Calculations* calc):
-		IDisplay_State(set, calc) {}
+	Display_Distance_State(Settings* set):
+		IDisplay_State(set) {}
 
 	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
-	virtual void update_display();
 };
 #endif /* DISPLAY_DISTANCE_STATE_H_ */

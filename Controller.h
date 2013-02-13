@@ -13,6 +13,8 @@
 #include "Cyclometer_Reset_State.h"
 #include "Display_Reset_State.h"
 #include "Settings.h"
+#include "pthread.h"
+#include "Calculations.h"
 
 class Controller {
 
@@ -21,6 +23,7 @@ private:
 	IDisplay_State* display_current;
 	Settings* settings;
 	Calculations* calculations;
+	pthread_t display_thread;
 public:
 	Controller(Settings*,Calculations*);
 	void receive_event(int,int,int,int,int,int);

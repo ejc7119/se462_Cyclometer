@@ -12,7 +12,7 @@ Controller::Controller(Settings* set,Calculations* calc){
 	calculations = calc;
 
 	cyclometer_current = new Cyclometer_Reset_State(settings);
-	display_current = new Display_Reset_State(settings, calculations);
+	display_current = new Display_Reset_State(settings);
 }
 void Controller::receive_event(int mode,int start_stop,int set,int mode_start_stop_set_held,int mode_held, int mode_start_stop_held){
 	// Determine the next cyclometer and display state
@@ -26,4 +26,5 @@ void Controller::receive_event(int mode,int start_stop,int set,int mode_start_st
 	// Set the current states to the new states
 	cyclometer_current = new_cyclometer_state;
 	display_current = new_display_state;
+
 }

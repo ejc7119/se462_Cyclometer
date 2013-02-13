@@ -23,6 +23,7 @@ public:
 	double get_distance();
 	double get_duration();
 	void receive_pulse();
+	int get_wheel_size();
 };
 
 #endif /* CALCULATIONS_H_ */
