@@ -16,3 +16,7 @@ IDisplay_State* Display_Duration_State::determine_state(int mode,int start_stop,
 		return new Display_Duration_State(settings,calculations);
 	}
 }
+
+void Display_Duration_State::update_display(){
+
+}

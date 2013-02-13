@@ -18,3 +18,7 @@ IDisplay_State* Display_Distance_State::determine_state(int mode,int start_stop,
 		return new Display_Distance_State(settings,calculations);
 	}
 }
+
+void Display_Distance_State::update_display(){
+
+}

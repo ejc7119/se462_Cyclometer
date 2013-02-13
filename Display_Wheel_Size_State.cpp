@@ -20,3 +20,7 @@ IDisplay_State* Display_Wheel_Size_State::determine_state(int mode,int start_sto
 		return new Display_Wheel_Size_State(settings,calculations);
 	}
 }
+
+void Display_Wheel_Size_State::update_display(){
+
+}

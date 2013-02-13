@@ -14,3 +14,7 @@ IDisplay_State* Display_Speed_Scale_State::determine_state(int mode,int start_st
 		return new Display_Speed_Scale_State(settings,calculations);
 	}
 }
+
+void Display_Speed_Scale_State::update_display(){
+
+}

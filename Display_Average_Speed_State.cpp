@@ -17,3 +17,7 @@ IDisplay_State* Display_Average_Speed_State::determine_state(int mode,int start_
 		return new Display_Average_Speed_State(settings,calculations);
 	}
 }
+
+void Display_Average_Speed_State::update_display(){
+
+}

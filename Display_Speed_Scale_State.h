@@ -18,6 +18,7 @@ public:
 		IDisplay_State(set,calc) {}
 
 	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
+	virtual void update_display();
 };
 
 #endif /* DISPLAY_SPEED_SCALE_STATE_H_ */
