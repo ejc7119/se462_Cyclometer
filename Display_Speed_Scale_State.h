@@ -10,11 +10,12 @@
 #include "IDisplay_State.h"
 #include "Settings.h"
 #include "Display_Wheel_Size_State.h"
+#include "Display.h"
 
 class Display_Speed_Scale_State: public IDisplay_State {
 public:
-	Display_Speed_Scale_State(Settings* set):
-		IDisplay_State(set) {}
+	Display_Speed_Scale_State(Settings* set,Display* dis):
+		IDisplay_State(set,dis) {}
 
 	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
 };

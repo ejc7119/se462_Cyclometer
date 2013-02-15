@@ -26,5 +26,6 @@ public:
 	void switch_speed_scale();
 	void switch_manual_mode();
 	void switch_initializing();
+	void reset();
 };
 #endif /* SETTINGS_H_ */

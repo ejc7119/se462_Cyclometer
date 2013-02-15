@@ -10,11 +10,12 @@
 
 #include "ICyclometer_State.h"
 #include "IDisplay_State.h"
-#include "Cyclometer_Reset_State.h"
-#include "Display_Reset_State.h"
 #include "Settings.h"
 #include "pthread.h"
 #include "Calculations.h"
+#include "Cyclometer_Speed_Scale_State.h"
+#include "Display_Speed_Scale_State.h"
+#include "Display.h"
 
 class Controller {
 
@@ -23,9 +24,10 @@ private:
 	IDisplay_State* display_current;
 	Settings* settings;
 	Calculations* calculations;
+	Display* display;
 	pthread_t display_thread;
 public:
-	Controller(Settings*,Calculations*);
+	Controller(Settings*,Calculations*,Display*);
 	void receive_event(int,int,int,int,int,int);
 };
 #endif /* CONTROLLER_H_ */

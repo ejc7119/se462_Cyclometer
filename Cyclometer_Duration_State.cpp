@@ -9,13 +9,14 @@
 
 ICyclometer_State* Cyclometer_Duration_State::determine_state(int mode,int start_stop,int set,int mode_start_stop_set_held,int mode_held, int mode_start_stop_held){
 	if(mode){
-		return new Cyclometer_Average_Speed_State(settings);
+		return new Cyclometer_Average_Speed_State(settings,calculations);
 	} else if(mode_start_stop_held){
-		// Reset trip values
-		return new Cyclometer_Duration_State(settings);
+		calculations->reset();
+		return new Cyclometer_Duration_State(settings,calculations);
 	} else if(mode_start_stop_set_held){
-		return new Cyclometer_Reset_State(settings);
+		calculations->full_reset();
+		return new Cyclometer_Speed_Scale_State(settings,calculations);
 	} else {
-		return new Cyclometer_Duration_State(settings);
+		return new Cyclometer_Duration_State(settings,calculations);
 	}
 }

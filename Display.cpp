@@ -26,18 +26,18 @@ void* Display::run_display(void* arg){
 		case AVERAGE:
 			self->displayAvgSpeed(self->calculations->get_average_speed());
 			self->displayCurrSpeed(self->calculations->get_current_speed());
-			self->updateDisplay(display.unit,display.tenth,display.isFraction,display.port_u, display.port_t, 0);
-			self->updateDisplay(display.unit_c,display.tenth_c, display.isFraction_c, display.portCurr_u, display.portCurr_t, 0);
+			self->updateDisplay(self->unit,self->tenth,self->isFraction,self->port_u, self->port_t, 0);
+			self->updateDisplay(self->unit_c,self->tenth_c, self->isFraction_c, self->portCurr_u, self->portCurr_t, 0);
 			break;
 		case DISTANCE:
 			self->displayTripDistance(self->calculations->get_distance());
-			self->updateDisplay(display.unit_c,display.tenth_c, display.isFraction_c, display.portCurr_u, display.portCurr_t, 0);
-			self->updateDisplay(display.unit,display.tenth,display.isFraction,display.port_u, display.port_t, 0);
+			self->updateDisplay(self->unit_c,self->tenth_c, self->isFraction_c, self->portCurr_u, self->portCurr_t, 0);
+			self->updateDisplay(self->unit,self->tenth,self->isFraction,self->port_u, self->port_t, 0);
 			break;
 		case DURATION:
 			self->displayTripTime(self->calculations->get_duration());
-			self->updateDisplay(display.unit_c,display.tenth_c, display.isFraction_c, display.portCurr_u, display.portCurr_t, 1);
-			self->updateDisplay(display.unit,display.tenth,display.isFraction,display.port_u, display.port_t, 0);
+			self->updateDisplay(self->unit_c,self->tenth_c, self->isFraction_c, self->portCurr_u, self->portCurr_t, 1);
+			self->updateDisplay(self->unit,self->tenth,self->isFraction,self->port_u, self->port_t, 0);
 			break;
 		case RESET:
 			break;
@@ -45,8 +45,8 @@ void* Display::run_display(void* arg){
 			break;
 		case WHEEL_SIZE:
 			self->displayWheelSize(self->calculations->get_wheel_size());
-			self->updateDisplay(display.unit_c,display.tenth_c, display.isFraction_c, display.portCurr_u, display.portCurr_t, 0);
-			self->updateDisplay(display.unit,display.tenth,display.isFraction,display.port_u, display.port_t, 0);
+			self->updateDisplay(self->unit_c,self->tenth_c, self->isFraction_c, self->portCurr_u, self->portCurr_t, 0);
+			self->updateDisplay(self->unit,self->tenth,self->isFraction,self->port_u, self->port_t, 0);
 			break;
 		default:
 			break;
@@ -222,12 +222,12 @@ void Display::updateDisplay(int unit, int tenth, int isFraction, int port_u, int
 
 void Display::selectSegment(int digit, int point, int displayPos)
 {
-	HWregister.writeRegister(ctrlHandle_A, 0xFF & displayPos);
-	HWregister.writeRegister(ctrlHandle_B, 0xFF);
+	HWregister.writeRegister(cntrlHandle_A, 0xFF & displayPos);
+	HWregister.writeRegister(cntrlHandle_B, 0xFF);
 
 	switch(point)
 		{
-		case 1: HWregister.writeRegister(ctrlHandle_B, ( SELECT_SEGMENT_DP ));
+		case 1: HWregister.writeRegister(cntrlHandle_B, ( SELECT_SEGMENT_DP ));
 		        break;
 		default: break;
 
@@ -236,33 +236,33 @@ void Display::selectSegment(int digit, int point, int displayPos)
 
 	switch(digit)
 	{
-	case 1: HWregister.writeRegister(ctrlHandle_A, SELECT_SEGMENT_B & SELECT_SEGMENT_C & displayPos);
+	case 1: HWregister.writeRegister(cntrlHandle_A, SELECT_SEGMENT_B & SELECT_SEGMENT_C & displayPos);
 	        break;
-	case 2: HWregister.writeRegister(ctrlHandle_A, SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_D & displayPos);
-	        HWregister.writeRegister(ctrlHandle_B, SELECT_SEGMENT_E & SELECT_SEGMENT_G );
+	case 2: HWregister.writeRegister(cntrlHandle_A, SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_D & displayPos);
+	        HWregister.writeRegister(cntrlHandle_B, SELECT_SEGMENT_E & SELECT_SEGMENT_G );
 	        break;
-	case 3: HWregister.writeRegister(ctrlHandle_A, SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_C & SELECT_SEGMENT_D & displayPos);
-	        HWregister.writeRegister(ctrlHandle_B,SELECT_SEGMENT_G);
+	case 3: HWregister.writeRegister(cntrlHandle_A, SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_C & SELECT_SEGMENT_D & displayPos);
+	        HWregister.writeRegister(cntrlHandle_B,SELECT_SEGMENT_G);
 	        break;
-	case 4: HWregister.writeRegister(ctrlHandle_A, SELECT_SEGMENT_B & SELECT_SEGMENT_C & displayPos);
-	        HWregister.writeRegister(ctrlHandle_B,SELECT_SEGMENT_F & SELECT_SEGMENT_G );
+	case 4: HWregister.writeRegister(cntrlHandle_A, SELECT_SEGMENT_B & SELECT_SEGMENT_C & displayPos);
+	        HWregister.writeRegister(cntrlHandle_B,SELECT_SEGMENT_F & SELECT_SEGMENT_G );
 	        break;
-	case 5: HWregister.writeRegister(ctrlHandle_A, SELECT_SEGMENT_A & SELECT_SEGMENT_C & SELECT_SEGMENT_D & displayPos);
-	        HWregister.writeRegister(ctrlHandle_B, SELECT_SEGMENT_F & SELECT_SEGMENT_G );
+	case 5: HWregister.writeRegister(cntrlHandle_A, SELECT_SEGMENT_A & SELECT_SEGMENT_C & SELECT_SEGMENT_D & displayPos);
+	        HWregister.writeRegister(cntrlHandle_B, SELECT_SEGMENT_F & SELECT_SEGMENT_G );
 	        break;
-	case 6: HWregister.writeRegister(ctrlHandle_A, SELECT_SEGMENT_A & SELECT_SEGMENT_D & SELECT_SEGMENT_C & displayPos);
-	        HWregister.writeRegister(ctrlHandle_B, SELECT_SEGMENT_F & SELECT_SEGMENT_E & SELECT_SEGMENT_G );
+	case 6: HWregister.writeRegister(cntrlHandle_A, SELECT_SEGMENT_A & SELECT_SEGMENT_D & SELECT_SEGMENT_C & displayPos);
+	        HWregister.writeRegister(cntrlHandle_B, SELECT_SEGMENT_F & SELECT_SEGMENT_E & SELECT_SEGMENT_G );
 	        break;
-	case 7: HWregister.writeRegister(ctrlHandle_A, (SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_C & displayPos));
+	case 7: HWregister.writeRegister(cntrlHandle_A, (SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_C & displayPos));
 	        break;
-	case 8: HWregister.writeRegister(ctrlHandle_A, (SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_C & SELECT_SEGMENT_D & displayPos));
-	        HWregister.writeRegister(ctrlHandle_B, (SELECT_SEGMENT_E & SELECT_SEGMENT_F & SELECT_SEGMENT_G ));
+	case 8: HWregister.writeRegister(cntrlHandle_A, (SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_C & SELECT_SEGMENT_D & displayPos));
+	        HWregister.writeRegister(cntrlHandle_B, (SELECT_SEGMENT_E & SELECT_SEGMENT_F & SELECT_SEGMENT_G ));
 	        break;
-	case 9: HWregister.writeRegister(ctrlHandle_A, (SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_C & SELECT_SEGMENT_D & displayPos));
-	        HWregister.writeRegister(ctrlHandle_B, (SELECT_SEGMENT_F & SELECT_SEGMENT_G ));
+	case 9: HWregister.writeRegister(cntrlHandle_A, (SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_C & SELECT_SEGMENT_D & displayPos));
+	        HWregister.writeRegister(cntrlHandle_B, (SELECT_SEGMENT_F & SELECT_SEGMENT_G ));
 	        break;
-	case 0: HWregister.writeRegister(ctrlHandle_A, (SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_C & SELECT_SEGMENT_D & displayPos));
-	        HWregister.writeRegister(ctrlHandle_B, (SELECT_SEGMENT_E & SELECT_SEGMENT_F & displayPos));
+	case 0: HWregister.writeRegister(cntrlHandle_A, (SELECT_SEGMENT_A & SELECT_SEGMENT_B & SELECT_SEGMENT_C & SELECT_SEGMENT_D & displayPos));
+	        HWregister.writeRegister(cntrlHandle_B, (SELECT_SEGMENT_E & SELECT_SEGMENT_F & displayPos));
 	        break;
 	default: break;
 

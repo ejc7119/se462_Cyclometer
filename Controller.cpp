@@ -7,12 +7,13 @@
 
 #include "Controller.h"
 
-Controller::Controller(Settings* set,Calculations* calc){
+Controller::Controller(Settings* set,Calculations* calc,Display* dis){
 	settings = set;
 	calculations = calc;
+	display = dis;
 
-	cyclometer_current = new Cyclometer_Reset_State(settings);
-	display_current = new Display_Reset_State(settings);
+	cyclometer_current = new Cyclometer_Speed_Scale_State(settings,calculations);
+	display_current = new Display_Speed_Scale_State(settings,display);
 }
 void Controller::receive_event(int mode,int start_stop,int set,int mode_start_stop_set_held,int mode_held, int mode_start_stop_held){
 	// Determine the next cyclometer and display state

@@ -60,3 +60,8 @@ void Settings::switch_initializing(){
 		initializing = true;
 	}
 }
+
+void Settings::reset(){
+	km_speed_scale = true;
+	wheel_size = 210;
+}

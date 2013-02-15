@@ -13,8 +13,8 @@
 
 class Cyclometer_Speed_Scale_State: public ICyclometer_State {
 public:
-	Cyclometer_Speed_Scale_State(Settings* set):
-		ICyclometer_State(set) {}
+	Cyclometer_Speed_Scale_State(Settings* set,Calculations* calc):
+		ICyclometer_State(set,calc) {}
 	virtual ICyclometer_State* determine_state(int,int,int,int,int,int);
 };
 

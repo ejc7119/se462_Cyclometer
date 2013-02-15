@@ -24,6 +24,8 @@ public:
 	double get_duration();
 	void receive_pulse();
 	int get_wheel_size();
+	void reset();
+	void full_reset();
 };
 
 #endif /* CALCULATIONS_H_ */

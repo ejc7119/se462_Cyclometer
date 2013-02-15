@@ -34,3 +34,16 @@ int Calculations::get_wheel_size(){
 void Calculations::receive_pulse(){
 
 }
+
+void Calculations::full_reset(){
+	average_speed = 0;
+	distance = 0;
+	duration = 0;
+	settings->reset();
+}
+
+void Calculations::reset(){
+	average_speed = 0;
+	distance = 0;
+	duration = 0;
+}

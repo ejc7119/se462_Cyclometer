@@ -10,12 +10,13 @@
 #include "IDisplay_State.h"
 #include "Settings.h"
 #include "Display_Distance_State.h"
-#include "Display_Reset_State.h"
+#include "Display_Speed_Scale_State.h"
+#include "Display.h"
 
 class Display_Average_Speed_State: public IDisplay_State {
 public:
-	Display_Average_Speed_State(Settings* set):
-		IDisplay_State(set) {}
+	Display_Average_Speed_State(Settings* set,Display* dis):
+		IDisplay_State(set,dis) {}
 
 	virtual IDisplay_State* determine_state(int,int,int,int,int,int);
 };

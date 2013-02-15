@@ -10,12 +10,12 @@
 #include "ICyclometer_State.h"
 #include "Settings.h"
 #include "Cyclometer_Average_Speed_State.h"
-#include "Cyclometer_Reset_State.h"
+#include "Cyclometer_Speed_Scale_State.h"
 
 class Cyclometer_Duration_State: public ICyclometer_State{
 public:
-	Cyclometer_Duration_State(Settings* set):
-		ICyclometer_State(set) {}
+	Cyclometer_Duration_State(Settings* set,Calculations* calc):
+		ICyclometer_State(set,calc) {}
 	virtual ICyclometer_State* determine_state(int,int,int,int,int,int);
 };
 
