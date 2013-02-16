@@ -11,7 +11,7 @@
 class Cregister{
 public:
 	int getIOaccess();
-	int configurePort( );
+	int configurePort();
 	uintptr_t memoryMapPortB();
 	uintptr_t memoryMapPortA();
 	uintptr_t memoryMapPortC();

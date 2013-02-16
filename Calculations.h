@@ -8,6 +8,7 @@
 #ifndef CALCULATIONS_H_
 #define CALCULATIONS_H_
 #include "Settings.h"
+#include "pthread.h"
 
 class Calculations{
 private:
@@ -26,6 +27,7 @@ public:
 	int get_wheel_size();
 	void reset();
 	void full_reset();
+	static void* run_calculations(void*);
 };
 
 #endif /* CALCULATIONS_H_ */

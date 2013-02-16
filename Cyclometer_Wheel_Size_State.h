@@ -12,11 +12,12 @@
 #include "Cyclometer_Average_Speed_State.h"
 #include "Cyclometer_Wheel_Size_State.h"
 #include "Cyclometer_Distance_State.h"
+#include "Display.h"
 
 class Cyclometer_Wheel_Size_State: public ICyclometer_State {
 public:
-	Cyclometer_Wheel_Size_State(Settings* set,Calculations* calc):
-		ICyclometer_State(set,calc) {}
+	Cyclometer_Wheel_Size_State(Settings* set,Calculations* calc,Display* dis):
+		ICyclometer_State(set,calc,dis) {}
 	virtual ICyclometer_State* determine_state(int,int,int,int,int,int);
 };
 

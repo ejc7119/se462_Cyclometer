@@ -23,6 +23,9 @@ int main(int argc, char *argv[]) {
 	pthread_t display_thread; //the thread of the inputs
 	pthread_create(&display_thread,NULL,Display::run_display,display);
 
+	pthread_t calculations_thread;
+	pthread_create(&calculations_thread,NULL,Calculations::run_calculations,calculations);
+
 	while(1){
 
 	}

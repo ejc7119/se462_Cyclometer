@@ -64,4 +64,6 @@ void Settings::switch_initializing(){
 void Settings::reset(){
 	km_speed_scale = true;
 	wheel_size = 210;
+	initializing = true;
+	manual_mode = true;
 }

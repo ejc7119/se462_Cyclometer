@@ -19,8 +19,10 @@
 #define SET_BUTTON 1
 #define START_BUTTON 2
 #define MODE_BUTTON 4
-#define MODE_START_BUTTON 5
+#define MODE_START_BUTTON 6
 #define ALL_BUTTON 7
+#define CONT_PRESS_MODE 10
+#define INVALID_KEY	0
 
 using namespace std;
 class Inputs {

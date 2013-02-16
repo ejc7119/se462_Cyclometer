@@ -47,3 +47,7 @@ void Calculations::reset(){
 	distance = 0;
 	duration = 0;
 }
+
+void* Calculations::run_calculations(void*){
+	return NULL;
+}
