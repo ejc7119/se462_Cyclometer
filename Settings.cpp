@@ -11,6 +11,7 @@ Settings::Settings(){
 	wheel_size = 210;
 	km_speed_scale = true;
 	manual_mode = true;
+	initializing = true;
 }
 
 int Settings::get_wheel_size(){

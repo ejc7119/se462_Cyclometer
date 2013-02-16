@@ -19,9 +19,10 @@
 #define AVERAGE 1
 #define DISTANCE 2
 #define DURATION 3
-#define RESET 4
 #define SPEED_SCALE 5
 #define WHEEL_SIZE 6
+
+using namespace std;
 
 class Display{
 private:
@@ -56,5 +57,6 @@ public:
 	Display(Calculations*);
 	static void* run_display(void*);
 	void set_state(int);
+	void displayReset();
 };
 #endif /* DISPLAY_H_ */

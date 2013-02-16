@@ -24,32 +24,26 @@ void Inputs::get_inputs(){
 	case MODE_BUTTON:
 		// If MODE press
 		controller->receive_event(1,0,0,0,0,0);
-		cout << "MODE PRESS" << endl;
 		break;
 	case START_BUTTON:
 		// If START/STOP press
 		controller->receive_event(0,1,0,0,0,0);
-		cout << "START/STOP PRESS" << endl;
 		break;
 	case SET_BUTTON:
 		// If SET press
 		controller->receive_event(0,0,1,0,0,0);
-		cout << "SET PRESS" << endl;
 		break;
 	case ALL_BUTTON:
 		// If MODE_START/STOP_SET Held press
 		controller->receive_event(0,0,0,1,0,0);
-		cout << "ALL BUTTON PRESS" << endl;
 		break;
 	case CONT_PRESS_MODE:
 		// If MODE Held press
 		controller->receive_event(0,0,0,0,1,0);
-		cout << "MODE HELD" << endl;
 		break;
 	case MODE_START_BUTTON:
 		// If MODE_START/STOP Held press
 		controller->receive_event(0,0,0,0,0,1);
-		cout << "MODE START/STOP HELD" << endl;
 		break;
 	case INVALID_KEY:
 		break;

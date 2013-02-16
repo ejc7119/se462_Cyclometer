@@ -12,6 +12,8 @@ Controller::Controller(Settings* set,Calculations* calc,Display* dis){
 	calculations = calc;
 	display = dis;
 
+	//display->displayReset();
+	//display->set_state(SPEED_SCALE);
 	cyclometer_current = new Cyclometer_Speed_Scale_State(settings,calculations,display);
 }
 void Controller::receive_event(int mode,int start_stop,int set,int mode_start_stop_set_held,int mode_held, int mode_start_stop_held){

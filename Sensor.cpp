@@ -7,28 +7,30 @@
 
 #include "Sensor.h"
 unsigned long pulseCnt = 0;
+uintptr_t cntrlHandleS;
+uintptr_t cntrlHandleC;
+uintptr_t cntrlHandleCL;
 
-void Sensor::pulse_interrupt(){
-
+Sensor::Sensor(){
+	set_up_intr_magnetic_pulse();
 }
-int Sensor::getPulseFrmSensor(uintptr_t cntrlHandle)
-{
-	int data;
 
-	data = pulseRegister.readreg(cntrlHandle);
-	return (data & 0x08);
+long Sensor::get_count(){
+	return pulseCnt;
 }
 
 const struct sigevent* intrHandlr(void *arg, int id)
 {
-	Sensor* self = (Sensor*)arg;
 	pulseCnt++;
-	out8(self->cntrlHandleCL, 0x02);// reset interrupt to get successive interrupt
+	out8(cntrlHandleCL, 0x02);// reset interrupt to get successive interrupt
 	return NULL;
 }
 
 void Sensor::set_up_intr_magnetic_pulse(){
 	int intrID;
+
+	pulseRegister.getIOaccess();
+	pulseRegister.configurePort();
 
    cntrlHandleS = mmap_device_io(1,INTERRUPT_STATUS_REG );
    if(cntrlHandleS == MAP_DEVICE_FAILED)

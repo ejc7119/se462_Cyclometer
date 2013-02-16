@@ -7,7 +7,6 @@
 
 #ifndef SENSOR_H_
 #define SENSOR_H_
-#include "Calculations.h"
 #include "Cregister.h"
 #include <string.h>
 #include <stdlib.h>
@@ -38,18 +37,12 @@ const struct sigevent* intrHandlr(void *arg, int id);
 using namespace std;
 class Sensor{
 private:
-	Calculations* calculations;
 	Cregister pulseRegister;
 
 public:
-	Sensor(Calculations* calc):
-		calculations(calc){}
-	int getPulseFrmSensor(uintptr_t cntrlHandle);
+	Sensor();
 	void set_up_intr_magnetic_pulse();
-	void pulse_interrupt();
-	uintptr_t cntrlHandleS;
-	uintptr_t cntrlHandleC;
-	uintptr_t cntrlHandleCL;
+	long get_count();
 };
 
 #endif /* SENSOR_H_ */

@@ -11,10 +11,10 @@
 int main(int argc, char *argv[]) {
 
 	Settings* settings = new Settings();
-	Calculations* calculations = new Calculations(settings);
+	Sensor* sensor = new Sensor();
+	Calculations* calculations = new Calculations(settings,sensor);
 	Display* display = new Display(calculations);
 	Controller* controller = new Controller(settings, calculations,display);
-	Sensor* sensor = new Sensor(calculations);
 	Inputs* inputs = new Inputs(controller);
 
 	pthread_t inputs_thread; //the thread of the inputs

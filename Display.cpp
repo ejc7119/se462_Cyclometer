@@ -8,7 +8,7 @@
 
 Display::Display(Calculations* calc){
 	calculations = calc;
-	state = RESET;
+	state = SPEED_SCALE;
 	HWregister.getIOaccess();
 	HWregister.configurePort();
 	cntrlHandle_A = HWregister.memoryMapPortA();
@@ -39,10 +39,9 @@ void* Display::run_display(void* arg){
 			self->updateDisplay(self->unit_c,self->tenth_c, self->isFraction_c, self->portCurr_u, self->portCurr_t, 1);
 			self->updateDisplay(self->unit,self->tenth,self->isFraction,self->port_u, self->port_t, 0);
 			break;
-		case RESET:
-			break;
 		case SPEED_SCALE:
 			self->displaySpeedScale();
+			self->updateDisplay(self->unit,self->tenth,self->isFraction,self->port_u, self->port_t, 0);
 			break;
 		case WHEEL_SIZE:
 			self->displayWheelSize(self->calculations->get_wheel_size());
@@ -98,7 +97,6 @@ void Display::displayTripTimeSec(float data)
 void Display::displayTripDistanceUpper(float data)
 {
 	breakCurrSpeed(data);
-	displayelapsedDistance = 1;
 	portCurr_u = 0xFB;
 	portCurr_t = 0xF7;
 	isFraction_c = 0;
@@ -107,7 +105,6 @@ void Display::displayTripDistanceUpper(float data)
 void Display::displayTripDistancelower(float data)
 {
 	breakDatainDigits(data);
-	displayelapsedDistance = 1;
 	port_u = 0xFE;
 	port_t = 0xFD;
 	isFraction = 1;
@@ -133,30 +130,50 @@ void Display::displayWheelSizelower(int data)
 
 void Display::displayWheelSize(int data)
 {
-	displayelapsedDistance = 0;
 	displayWheelSizeUpper(data/100);
 	displayWheelSizelower(data%100);
 }
 
 void Display::displayTripTime(float data)
 {
-  displayCurrentSpeed = 0;
-  displayAvSpeed = 0;
-  displayTripTimeMin(data/100);
-  displayTripTimeSec((int)data%100);
+	if(data< 1)
+	{
+	displayTripTimeMin(data/100);
+	displayTripTimeSec(data);
+	}
+	else
+	{
+     displayTripTimeMin(data/100);
+     displayTripTimeSec((int)data%100);
+	}
 }
 
 void Display::displaySpeedScale(){
-	//breakDatainDigits(data);
+
+	if(calculations->is_km_speed_scale()){
+		breakDatainDigits(1);
+
+	} else {
+		breakDatainDigits(2);
+
+	}
 	port_u = 0xFE;
+	port_t = 0xFF;
 	isFraction = 0;
 }
 
 void Display::displayTripDistance(float data)
 {
-	displayelapsedTime = 0;
+	if(data < 1)
+	{
+	 displayTripDistanceUpper(data/100);
+	 displayTripDistancelower(data);
+	}
+	else
+	{
 	displayTripDistanceUpper(data/100);
 	displayTripDistancelower((int)data%100);
+	}
 }
 
 void Display::breakDatainDigits(float data)
@@ -222,8 +239,9 @@ void Display::updateDisplay(int unit, int tenth, int isFraction, int port_u, int
 	   selectSegment(isFraction, 1, port_t);
 	  else
 	   selectSegment(isFraction, 1, port_u);
+	  usleep(100);
    }
-   usleep(100);
+
    return;
 }
 
@@ -276,5 +294,11 @@ void Display::selectSegment(int digit, int point, int displayPos)
 	}
 
 	return;
+}
+
+void Display::displayReset(void)
+{
+	HWregister.writeRegister(cntrlHandle_A, 0x0F);
+//	HWregister.writeRegister(cntrlHandle_B, 0xFF);
 }
 
