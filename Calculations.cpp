@@ -40,6 +40,7 @@ void Calculations::full_reset(){
 	distance = 0;
 	duration = 0;
 	settings->reset();
+	calculating = false;
 }
 
 void Calculations::reset(){
@@ -48,10 +49,25 @@ void Calculations::reset(){
 	duration = 0;
 }
 
-void* Calculations::run_calculations(void*){
+void* Calculations::run_calculations(void* arg){
+	Calculations* self = (Calculations*)arg;
+	while(1){
+		if(self->calculating || self->settings->is_manual_mode() == false){
+			return NULL;
+		}
+	}
 	return NULL;
 }
 
 void Calculations::start_calculations(){
-
+	calculating = true;
 }
+
+void Calculations::stop_calculations(){
+	calculating = false;
+}
+
+bool Calculations::is_calculating(){
+	return calculating;
+}
+

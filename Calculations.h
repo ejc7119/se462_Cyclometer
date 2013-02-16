@@ -17,6 +17,7 @@ private:
 	double distance;
 	double duration;
 	Settings* settings;
+	bool calculating;
 public:
 	Calculations(Settings*);
 	double get_average_speed();
@@ -28,6 +29,8 @@ public:
 	void reset();
 	void full_reset();
 	void start_calculations();
+	void stop_calculations();
+	bool is_calculating();
 	static void* run_calculations(void*);
 };
 

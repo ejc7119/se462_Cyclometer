@@ -16,7 +16,11 @@ ICyclometer_State* Cyclometer_Average_Speed_State::determine_state(int mode,int 
 		return new Cyclometer_Average_Speed_State(settings,calculations,display);
 	} else if (start_stop){
 		if(settings->is_manual_mode()){
-			calculations->start_calculations();
+			if(calculations->is_calculating()){
+				calculations->stop_calculations();
+			} else {
+				calculations->start_calculations();
+			}
 		}
 		return new Cyclometer_Average_Speed_State(settings,calculations,display);
 	} else if(mode_start_stop_held){
