@@ -27,6 +27,7 @@ public:
 	int get_wheel_size();
 	void reset();
 	void full_reset();
+	void start_calculations();
 	static void* run_calculations(void*);
 };
 

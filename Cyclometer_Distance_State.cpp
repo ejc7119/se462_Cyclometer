@@ -14,6 +14,11 @@ ICyclometer_State* Cyclometer_Distance_State::determine_state(int mode,int start
 	} else if(set){
 		display->set_state(WHEEL_SIZE);
 		return new Cyclometer_Wheel_Size_State(settings,calculations,display);
+	} else if (start_stop){
+		if(settings->is_manual_mode()){
+			calculations->start_calculations();
+		}
+		return new Cyclometer_Distance_State(settings,calculations,display);
 	} else if(mode_start_stop_held){
 		calculations->reset();
 		return new Cyclometer_Distance_State(settings,calculations,display);

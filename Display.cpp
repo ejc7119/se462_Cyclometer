@@ -42,6 +42,7 @@ void* Display::run_display(void* arg){
 		case RESET:
 			break;
 		case SPEED_SCALE:
+			self->displaySpeedScale();
 			break;
 		case WHEEL_SIZE:
 			self->displayWheelSize(self->calculations->get_wheel_size());
@@ -143,6 +144,12 @@ void Display::displayTripTime(float data)
   displayAvSpeed = 0;
   displayTripTimeMin(data/100);
   displayTripTimeSec((int)data%100);
+}
+
+void Display::displaySpeedScale(){
+	//breakDatainDigits(data);
+	port_u = 0xFE;
+	isFraction = 0;
 }
 
 void Display::displayTripDistance(float data)

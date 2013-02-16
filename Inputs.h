@@ -30,6 +30,7 @@ private:
 	Controller* controller;
 	void get_inputs();
 	int whichButtonPressed();
+	int readButton();
 	uintptr_t cntrlHandle;
 	Cregister HWregister;
 public:

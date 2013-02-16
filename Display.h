@@ -50,6 +50,7 @@ private:
     void displayTripDistancelower(float data);
     void displayWheelSizeUpper(int data);
     void displayWheelSizelower(int data);
+    void displaySpeedScale();
 
 public:
 	Display(Calculations*);

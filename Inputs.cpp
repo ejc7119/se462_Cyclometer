@@ -69,8 +69,68 @@ void* Inputs::run_inputs(void* arg){
 	return NULL;
 }
 
+int Inputs::readButton(){
+    int data = 0, count = 0;
+    int prevData = 0;
+    static int contPress = 0;
+
+    //cout<<"Key read"<<endl;
+	data = HWregister.readreg(cntrlHandle);
+	prevData = data;
+	usleep(80000);
+	data = HWregister.readreg(cntrlHandle);
+	if(data != prevData)
+	{
+		//cout<<"Different Key Pressed"<<endl;
+		if(data != ALL_BUTTON)
+		   return data;
+		else if(data == ALL_BUTTON)
+		{
+			sleep(1);
+			data = HWregister.readreg(cntrlHandle);
+			//cout<<"data:"<<data;
+			if(data == ALL_BUTTON)
+				return ALL_BUTTON;
+		}
+	}
+	else if (data == prevData && data != 0)
+	{
+		//cout<<"same key pressed"<<endl;
+		if(data != MODE_BUTTON)
+			return data;
+		usleep(50000);
+		while(MODE_BUTTON == HWregister.readreg(cntrlHandle))
+		{
+			//cout<<"Button is pressed :"<<count<<endl;
+			count++;
+			if(count == 50000)
+				break;
+
+		}
+
+		if(count == 50000)
+		{
+			contPress = 1;
+			return CONT_PRESS_MODE;
+		}
+		else
+		{
+		    if(contPress == 1)
+		    {
+		    	contPress = 0;
+		    	return INVALID_KEY;
+		    }
+		    else
+			    return MODE_BUTTON;
+		}
+	}
+
+
+	return INVALID_KEY;
+}
+
 int Inputs::whichButtonPressed(){
-	int data = HWregister.readreg(cntrlHandle);
+	int data = readButton();
 	switch(data)
 	{
 		case 1: return SET_BUTTON;

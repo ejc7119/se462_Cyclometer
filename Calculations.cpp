@@ -51,3 +51,7 @@ void Calculations::reset(){
 void* Calculations::run_calculations(void*){
 	return NULL;
 }
+
+void Calculations::start_calculations(){
+
+}
